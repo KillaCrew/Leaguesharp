@@ -1,1 +1,2 @@
 c:\users\ninten\documents\visual studio 2013\Projects\Killa Yi\Killa Yi\bin\Debug\Killa Yi.exe.config
+C:\Users\ninten\Desktop\Leaguesharp\Killa Yi\Killa Yi\bin\Debug\Killa Yi.exe.config

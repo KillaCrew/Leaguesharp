@@ -1,4 +1,4 @@
-﻿#region
+﻿#region Stuff
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using SharpDX;
 using Color = System.Drawing.Color;
 
 
-#endregion
+#endregion Stuff
 
 namespace Killa_Karate_YI
 {
@@ -17,7 +17,6 @@ namespace Killa_Karate_YI
         public const string ChampionName = "MasterYi";
 
         //Spells
-        public static List<Spell> SpellList = new List<Spell>();
 
         static Spell SmiteSlot;
         public static SpellSlot smiteSlot = SpellSlot.Unknown;
@@ -26,10 +25,7 @@ namespace Killa_Karate_YI
         public static Items.Item BOTRK = new Items.Item(3153, 550f);
         public static Items.Item Hydra = new Items.Item(3074, 440f);
         public static Items.Item Youmuus = new Items.Item(3142, 0);
-        public static Items.Item Quicksilver = new Items.Item(3140, 0);
         public static Items.Item HydraTitanic = new Items.Item(3748, 150f);
-        public static Items.Item mercurial = new Items.Item(3139, 0);
-        //wards
         static Orbwalking.Orbwalker Orbwalker;
         static Menu Menu;
         static Obj_AI_Hero Player { get { return ObjectManager.Player; } }
@@ -38,8 +34,6 @@ namespace Killa_Karate_YI
         public static Spell W;
         public static Spell E;
         public static Spell R;
-
-        //static List<SpellSlot> AUTO_LEVEL_SEQUENCE = new List<SpellSlot>() { SpellSlot.Q, SpellSlot.W, SpellSlot.E, SpellSlot.Q, SpellSlot.Q, SpellSlot.R, SpellSlot.Q, SpellSlot.W, SpellSlot.Q, SpellSlot.W, SpellSlot.R, SpellSlot.W, SpellSlot.W, SpellSlot.E, SpellSlot.E, SpellSlot.R, SpellSlot.E, SpellSlot.E };
 
         //Menu
         public static Menu Config;
@@ -135,16 +129,13 @@ namespace Killa_Karate_YI
         }
 
         public static void Game_ProcessSpell(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
-        {
-            if (sender.IsEnemy && sender is Obj_AI_Hero && args.Target.IsMe)
+        { 
+            if (((Obj_AI_Hero)sender).ChampionName.ToLower() == "vayne"
+                && args.Slot == SpellSlot.E)
             {
-                if (((Obj_AI_Hero)sender).ChampionName.ToLower() == "vayne"
-                    && args.Slot == SpellSlot.E)
+                if (Q.IsReady())
                 {
-                    if (Q.IsReady())
-                    {
-                        Q.Cast(sender);
-                    }
+                    Q.Cast(sender);
                 }
             }
         }
@@ -186,10 +177,6 @@ namespace Killa_Karate_YI
                         LaneClear();
                         JungleClear();
                     }
-                    break;
-
-                case Orbwalking.OrbwalkingMode.None:
-
                     break;
             }
             AutoPots();
