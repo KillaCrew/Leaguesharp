@@ -1,2 +1,0 @@
-c:\users\ninten\documents\visual studio 2013\Projects\BearGryllsWarwick\BearGryllsWarwick\bin\Debug\BearGryllsWarwick.exe.config
-F:\Users\ninten\BACKUP C\Visual Studio 2013\Projects\BearGryllsWarwick\BearGryllsWarwick\bin\Release\BearGryllsWarwick.exe.config
