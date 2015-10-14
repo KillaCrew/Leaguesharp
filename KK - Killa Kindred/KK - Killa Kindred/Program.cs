@@ -136,7 +136,7 @@ namespace Kindred
             Game.OnUpdate += Game_OnGameUpdate;
             AntiGapcloser.OnEnemyGapcloser += AntiGapcloser_OnEnemyGapcloser;
             Orbwalking.AfterAttack += Orbwalking_AfterAttack;
-            Obj_AI_Base.OnProcessSpellCast += Game_ProcessSpell;
+            //Obj_AI_Base.OnProcessSpellCast += Game_ProcessSpell; SOON
 
         }
 
@@ -161,20 +161,6 @@ namespace Kindred
             }
 
             return;
-        }
-
-        public static void Game_ProcessSpell(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
-        {
-            if (sender.IsEnemy && sender is Obj_AI_Hero && args.Target.IsMe)
-            {
-                if (((Obj_AI_Hero)sender).ChampionName.ToLower() == "vayne" && args.Slot == SpellSlot.E)
-                {
-                    if (Q.IsReady())
-                    {
-                        Q.Cast(sender);
-                    }
-                }
-            }
         }
 
         private static void Orbwalking_AfterAttack(AttackableUnit unit, AttackableUnit target)
